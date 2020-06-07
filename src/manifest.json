@@ -1,0 +1,15 @@
+{
+  "name": "Polaron CMS",
+  "short_name": "Polaron",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "assets/icon/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#0062FF",
+  "theme_color": "#0062FF"
+}
