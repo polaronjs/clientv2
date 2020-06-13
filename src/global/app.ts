@@ -2,6 +2,12 @@
 import '@ionic/pwa-elements';
 import '@polaron/shift';
 
+// start window listener
+import '../stores/window';
+
+// import variable store to execute immediately
+import '../stores/vars';
+
 export default async () => {
   /**
    * The code to be executed should be placed within a default function that is

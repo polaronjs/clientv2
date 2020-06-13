@@ -1,4 +1,5 @@
 import { Component, h } from '@stencil/core';
+import { authState } from '../../stores/auth';
 
 @Component({
   tag: 'app-root',
@@ -11,9 +12,7 @@ export class AppRoot {
   render() {
     return (
       <main>
-        <stencil-router>
-          <stencil-route-switch scrollTopOffset={0} />
-        </stencil-router>
+        {authState.loggedIn ? <app-main></app-main> : <app-auth></app-auth>}
       </main>
     );
   }

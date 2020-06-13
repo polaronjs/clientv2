@@ -10,11 +10,10 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'www',
-      // comment the following line to disable service workers in production
+      baseUrl: 'https://myapp.local/',
       serviceWorker: {
         globPatterns: ['**/*.{js,css,json,html,ico,png}'],
       },
-      baseUrl: 'https://myapp.local/',
     },
   ],
   plugins: [sass()],
