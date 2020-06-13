@@ -2,8 +2,6 @@ dist/
 !www/favicon.ico
 www/
 
-src/components.d.ts
-
 *~
 *.sw[mnpcod]
 *.log
@@ -26,3 +24,5 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+
+components.d.ts
