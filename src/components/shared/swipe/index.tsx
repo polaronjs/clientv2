@@ -3,10 +3,10 @@ import { Swipe, Point } from './swipe';
 import { SwipeHandlerStore } from './handler';
 
 @Component({
-  tag: 'app-swipe',
-  shadow: true,
+  tag: 'p-swipe',
+  scoped: true,
 })
-export class AppSwipe {
+export class PolaronSwipe {
   @Element() host: HTMLElement;
 
   ignore: boolean;

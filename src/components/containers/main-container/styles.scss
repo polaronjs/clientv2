@@ -4,22 +4,25 @@
   left: 0;
   bottom: 0;
   overflow-y: auto;
-  border-right: 2px solid var(--gray6Color);
-  width: var(--sidebarWidth);
+  border-right: 2px solid $gray6;
+  width: $sidebarWidth;
   padding: 40px;
   box-sizing: border-box;
   z-index: 2;
   background: white;
 
   &.main__left--mobile {
-    transform: translateX(calc(var(--sidebarWidth) * -1));
+    transform: translateX(calc(#{$sidebarWidth} * -1));
+    opacity: 0;
+    border-right: 0;
+    box-shadow: 2px 0 6px 1px rgba(0, 0, 0, 0.1);
   }
 }
 
 .main__right {
   position: relative;
-  left: var(--sidebarWidth);
-  width: calc(100vw - var(--sidebarWidth));
+  left: $sidebarWidth;
+  width: calc(100vw - #{$sidebarWidth});
   min-height: 100vh;
   padding: 40px;
   box-sizing: border-box;

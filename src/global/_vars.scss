@@ -1,0 +1,42 @@
+// sizes
+$ratio: 1.151;
+$s0: 1rem;
+$s1: $s0 * $ratio;
+$s2: $s1 * $ratio;
+$s3: $s2 * $ratio;
+$s4: $s3 * $ratio;
+$s5: $s4 * $ratio;
+$s6: $s5 * $ratio;
+$s-1: $s0 / $ratio;
+
+// structure
+$sidebarWidth: var(--sidebarWidth);
+
+// colors
+$accent: var(--accentColor);
+$success: var(--successColor);
+$danger: var(--dangerColor);
+$gray1: var(--gray1Color);
+$gray2: var(--gray2Color);
+$gray3: var(--gray3Color);
+$gray4: var(--gray4Color);
+$gray5: var(--gray5Color);
+$gray6: var(--gray6Color);
+$gray7: var(--gray7Color);
+
+// mixins
+@mixin text--gray() {
+  color: $gray1;
+}
+
+@mixin text--medium-gray() {
+  color: $gray2;
+}
+
+@mixin text--light-gray() {
+  color: $gray3;
+}
+
+@mixin text--accent() {
+  color: $accent;
+}

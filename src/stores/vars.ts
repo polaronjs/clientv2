@@ -12,7 +12,10 @@ const writeVars = () => {
 
 const { state: vars, onChange } = createStore(config);
 
-onChange(null, writeVars);
+Object.keys(vars).forEach((key) => {
+  // @ts-ignore
+  onChange(key, writeVars);
+});
 
 export const invertGrays = () => {
   throw new Error('Not yet implemented');

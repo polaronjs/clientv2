@@ -8,8 +8,60 @@
   Any global CSS variables should also be applied here.
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+// @import url('../assets/all.min.css');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-size: 16px; // set em and rem here for entire application
+
+  * {
+    font-family: 'Open Sans', sans-serif;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: $s6;
+}
+
+h2 {
+  font-size: $s5;
+}
+
+h3 {
+  font-size: $s4;
+}
+
+h4 {
+  font-size: $s3;
+}
+
+h5 {
+  font-size: $s2;
+}
+
+h6 {
+  font-size: $s1;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

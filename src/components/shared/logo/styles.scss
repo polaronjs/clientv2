@@ -1,0 +1,16 @@
+svg {
+  fill: $accent;
+  width: 45px;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+h3 {
+  @include text--accent();
+}
+
+:host {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}

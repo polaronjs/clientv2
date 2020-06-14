@@ -1,14 +1,14 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'app-articles',
-  shadow: true,
+  tag: 'p-page-articles',
+  scoped: true,
 })
-export class AppMain {
+export class ArticlesPage {
   render() {
     return (
       <Host>
-        <h1>Articles Page</h1>
+        <h2>Articles Page</h2>
       </Host>
     );
   }
