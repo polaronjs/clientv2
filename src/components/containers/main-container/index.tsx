@@ -29,13 +29,11 @@ export class MainContainer {
 
   private readonly swipeHandler = new SwipeHandlerStore({
     onTouchStart: (event: TouchEvent) => {
-      if (event.touches.length === 1) {
-        if (
-          event.touches[0].pageX < 20 ||
-          event.touches[0].pageY > window.innerWidth - 20
-        ) {
-          event.preventDefault();
-        }
+      if (
+        event.touches[0].pageX < 15 ||
+        event.touches[0].pageX > window.innerWidth - 15
+      ) {
+        event.preventDefault();
       }
     },
     onTouchMove: (event: TouchEvent, swipe: Swipe) => {

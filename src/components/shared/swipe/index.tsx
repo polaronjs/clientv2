@@ -16,7 +16,7 @@ export class PolaronSwipe {
 
   @Prop() handlers: SwipeHandlerStore[] = [];
 
-  @Listen('touchstart', { target: this.host })
+  @Listen('touchstart', { target: this.host, passive: false })
   handleTouchStart(event: TouchEvent) {
     if (event.touches.length > 1) {
       // this is a multi touch, noop
@@ -30,11 +30,7 @@ export class PolaronSwipe {
     };
 
     this.handlers.forEach((handler) => {
-      if (
-        this.swipe &&
-        handler.isElligibleForSwipe(this.swipe) &&
-        handler.onTouchStart
-      ) {
+      if (handler.onTouchStart) {
         handler.onTouchStart(event);
       }
     });
