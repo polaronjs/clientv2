@@ -30,8 +30,8 @@ export class MainContainer {
   private readonly swipeHandler = new SwipeHandlerStore({
     onTouchStart: (event: TouchEvent) => {
       if (
-        event.touches[0].pageX < 15 ||
-        event.touches[0].pageX > window.innerWidth - 15
+        event.touches[0].pageX < 30 ||
+        event.touches[0].pageX > window.innerWidth - 30
       ) {
         event.preventDefault();
       }
