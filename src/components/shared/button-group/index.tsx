@@ -19,7 +19,7 @@ export const ButtonGroup: FunctionalComponent<ButtonGroupProps> = (
     ...child,
     vattrs: {
       ...child.vattrs,
-      style: Object.assign(child.vattrs.style || {}, {
+      style: Object.assign(child.vattrs?.style || {}, {
         ['margin' + (flow === 'left' ? 'Right' : 'Left')]: gap + 'px',
       }),
     },

@@ -1,0 +1,21 @@
+.demo-wrapper {
+  padding: 40px;
+}
+
+fieldset {
+  border-color: $gray6;
+  max-width: 650px;
+  margin-top: 50px;
+
+  & > * {
+    display: block;
+    margin-bottom: 25px;
+  }
+}
+
+legend {
+  font-size: $s-1;
+  text-transform: uppercase;
+  color: $gray2;
+  font-weight: 600;
+}
