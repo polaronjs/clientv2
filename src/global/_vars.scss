@@ -12,10 +12,28 @@ $s-1: $s0 / $ratio;
 // structure
 $sidebarWidth: var(--sidebarWidth);
 
-// colors
+// accent colors
+$accent-2: var(--accentColor-2);
+$accent-1: var(--accentColor-1);
 $accent: var(--accentColor);
+$accent1: var(--accentColor1);
+$accent2: var(--accentColor2);
+
+// success colors
+$success-2: var(--successColor-2);
+$success-1: var(--successColor-1);
 $success: var(--successColor);
+$success1: var(--successColor1);
+$success2: var(--successColor2);
+
+// danger colors
+$danger-2: var(--dangerColor-2);
+$danger-1: var(--dangerColor-1);
 $danger: var(--dangerColor);
+$danger1: var(--dangerColor1);
+$danger2: var(--dangerColor2);
+
+// gray colors
 $gray1: var(--gray1Color);
 $gray2: var(--gray2Color);
 $gray3: var(--gray3Color);
@@ -24,17 +42,19 @@ $gray5: var(--gray5Color);
 $gray6: var(--gray6Color);
 $gray7: var(--gray7Color);
 
+$modalBackground: var(--modalBackground);
+
 // mixins
 @mixin text--gray() {
-  color: $gray1;
-}
-
-@mixin text--medium-gray() {
   color: $gray2;
 }
 
-@mixin text--light-gray() {
+@mixin text--medium-gray() {
   color: $gray3;
+}
+
+@mixin text--light-gray() {
+  color: $gray4;
 }
 
 @mixin text--accent() {

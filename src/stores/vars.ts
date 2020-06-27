@@ -6,7 +6,13 @@ import { config } from '../global/vars';
  */
 const writeVars = () => {
   for (const name of Object.keys(vars)) {
-    document.body.style.setProperty('--' + name, vars[name].toString());
+    let value = vars[name];
+
+    if (typeof value === 'function') {
+      value = value(vars);
+    }
+
+    document.body.style.setProperty('--' + name, value.toString());
   }
 };
 
@@ -18,7 +24,21 @@ Object.keys(vars).forEach((key) => {
 });
 
 export const invertGrays = () => {
-  throw new Error('Not yet implemented');
+  const keys = [];
+  let values = [];
+
+  Object.entries(vars)
+    .filter(([key]) => key.includes('gray'))
+    .forEach(([key, value]) => {
+      keys.push(key);
+      values.push(value);
+    });
+
+  values = values.reverse();
+
+  for (let i = 0; i < keys.length; i++) {
+    vars[keys[i]] = values[i];
+  }
 };
 
 export { vars };

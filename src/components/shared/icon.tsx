@@ -1,11 +1,21 @@
 import { h } from '@stencil/core';
-import { FunctionalComponent } from '@polaron/shift/dist/types/stencil-public-runtime';
+import { FunctionalComponent } from '@stencil/core';
 
 interface IconProps {
   name: string;
   weight?: 'solid' | 'light' | 'regular' | 'brand';
+  slot?: string;
 }
 
-export const Icon: FunctionalComponent<IconProps> = ({ name, weight }) => {
-  return <i class={`fa${(weight || 'regular').charAt(0)} fa-${name}`}></i>;
+export const Icon: FunctionalComponent<IconProps> = ({
+  name,
+  weight,
+  slot,
+}) => {
+  return (
+    <i
+      slot={slot}
+      class={`fa${(weight || 'regular').charAt(0)} fa-${name}`}
+    ></i>
+  );
 };

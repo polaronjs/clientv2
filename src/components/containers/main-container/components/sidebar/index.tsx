@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, State } from '@stencil/core';
 import { Icon } from '../../../../shared/icon';
 import { authState } from '../../../../../stores/auth';
 
@@ -8,13 +8,15 @@ import { authState } from '../../../../../stores/auth';
   scoped: false,
 })
 export class MainSidebar {
+  @State() modalOpen: boolean;
+
   render() {
     return (
       <Host>
         {/* we add an id here for added specificity since this component isn't scoped */}
         <div id="polaronSidebar" class="sidebar">
           <div>
-            <p-logo />
+            <p-logo onClick={() => (this.modalOpen = true)} />
 
             <div class="sidebar__menu">
               <div class="menu__list-header">Content</div>

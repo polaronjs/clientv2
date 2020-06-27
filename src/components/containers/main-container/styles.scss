@@ -9,7 +9,7 @@
   padding: 40px;
   box-sizing: border-box;
   z-index: 2;
-  background: white;
+  background: $gray7;
 
   &.main__left--mobile {
     transform: translateX(calc(#{$sidebarWidth} * -1));
@@ -27,7 +27,7 @@
   padding: 40px;
   box-sizing: border-box;
   z-index: 1;
-  background: white;
+  background: $gray7;
   transition: all 0.2s ease;
 
   &.main__right--mobile {

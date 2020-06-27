@@ -8,12 +8,22 @@ export class AppRoot {
   constructor() {}
 
   render() {
-    return (
-      <stencil-router>
+    if (!authState.loggedIn) {
+      return (
         <main>
-          {authState.loggedIn ? <p-container-main /> : <p-container-main />}
+          <p-container-auth />
+          <p-modal-container />
         </main>
-      </stencil-router>
-    );
+      );
+    } else {
+      return (
+        <main>
+          <stencil-router>
+            <p-container-main />
+            <p-modal-container />
+          </stencil-router>
+        </main>
+      );
+    }
   }
 }

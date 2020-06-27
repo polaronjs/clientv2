@@ -1,4 +1,4 @@
-interface Variable {
+export interface Variable {
   toString(): string;
 }
 

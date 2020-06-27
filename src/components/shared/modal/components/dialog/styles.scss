@@ -1,0 +1,71 @@
+$padding: 20px;
+
+.dialog {
+  background: $gray7;
+  padding: 15px $padding $padding;
+  box-shadow: 0 5px 35px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  min-width: 300px;
+  margin-left: 15px;
+  margin-right: 15px;
+  max-width: 450px;
+  width: calc(100vw - 30px); // 30 px from the 15 pixels for right/left margin
+  box-sizing: border-box;
+}
+
+.dialog__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  position: relative;
+  @include text--gray();
+
+  // underline
+  &:after {
+    content: '';
+    height: 1px;
+    background: $gray6;
+    bottom: 0;
+    position: absolute;
+    bottom: 0;
+    left: calc(-1 * #{$padding});
+    right: calc(-1 * #{$padding});
+  }
+
+  .title__close {
+    $padding: 10px;
+    font-size: 1.1rem;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: $padding;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -6px; // offset the right paddingc
+    cursor: pointer;
+    transition: all 0.2s ease;
+    @include text--medium-gray();
+
+    &:hover {
+      color: $gray1;
+      background: $gray6;
+    }
+  }
+}
+
+.dialog__message {
+  margin-top: 20px;
+  font-size: 1rem;
+  @include text--medium-gray();
+}
+
+.dialog__actions {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 35px;
+}

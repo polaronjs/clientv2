@@ -1,0 +1,119 @@
+////////////////////
+// DEFAULT STYLES //
+////////////////////
+
+.button {
+  appearance: none;
+  border-radius: 4px;
+  padding: 10px 25px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: 600;
+  outline: 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  transition: all 0.1s ease;
+
+  .button__icon {
+    display: none;
+    margin-left: 10px;
+  }
+}
+
+.button--icon {
+  .button__icon {
+    display: block;
+  }
+}
+
+.button--size-small {
+  font-size: 0.8rem;
+  padding: 8px 20px;
+}
+
+.button--size-large {
+  font-size: 1rem;
+  padding: 10px 30px;
+}
+
+.button--disabled {
+  pointer-events: none;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+/////////////////////////
+// STYLE & TYPE MIXINS //
+/////////////////////////
+
+@mixin type($background, $hover, $border, $text, $shadow) {
+  background: $background;
+  border: 2px solid $border;
+  color: $text;
+
+  &.button--type-solid {
+    // inherit all default styles
+    box-shadow: 0px 10px 20px -15px $shadow;
+
+    &:hover {
+      border-color: $hover;
+      background: $hover;
+    }
+
+    &:active {
+      border-color: $background;
+      background: $background;
+      transform: scale(0.98);
+      box-shadow: 0px 5px 10px -7px $shadow;
+    }
+  }
+
+  // TODO keep these?
+  // &.button--type-outline {
+  //   background: transparent;
+  //   color: $background;
+
+  //   &:hover {
+  //     color: $text;
+  //     background: $hover;
+  //   }
+
+  //   &:active {
+  //     transform: scale(0.98);
+  //   }
+  // }
+
+  &.button--type-link {
+    background: transparent;
+    border-color: transparent;
+    color: $background;
+
+    &:hover {
+      background: $gray6;
+    }
+
+    &:active {
+      background: $gray5;
+    }
+  }
+}
+
+.button--style-primary {
+  @include type($accent, $accent1, $accent, white, $accent);
+}
+
+.button--style-neutral {
+  @include type($gray3, $gray4, $gray3, white, $gray3);
+}
+
+.button--style-danger {
+  @include type($danger, $danger1, $danger, white, $danger);
+}
+
+.button--style-success {
+  @include type($success, $success1, $success, white, $success);
+}
