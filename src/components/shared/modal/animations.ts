@@ -14,10 +14,10 @@ export const animation = trigger('modal', [
   ]),
   transition(':leave', [
     style({ opacity: 1 }),
-    animate('100ms ease', style({ opacity: 0 })),
+    animate('150ms ease', style({ opacity: 0 })),
     query('.modal__body', [
       style({ transform: 'translateY(0)' }),
-      animate('100ms ease', style({ transform: 'translateY(100px)' })),
+      animate('150ms ease', style({ transform: 'translateY(100px)' })),
     ]),
   ]),
 ]);

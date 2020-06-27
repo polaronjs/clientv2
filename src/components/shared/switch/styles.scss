@@ -1,0 +1,49 @@
+button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  outline: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+span {
+  @include text--gray();
+  margin-right: 10px;
+}
+
+.switch {
+  background: $gray5;
+  width: 44px;
+  height: 24px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  transition: all 0.17s ease;
+  overflow: hidden;
+}
+
+.switch__fob {
+  background: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+  transition: inherit;
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.08);
+}
+
+.switch--selected {
+  background: $accent;
+
+  .switch__fob {
+    transform: translateX(20px);
+  }
+}
+
+.switch--disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}

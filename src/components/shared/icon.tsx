@@ -3,7 +3,7 @@ import { FunctionalComponent } from '@stencil/core';
 
 interface IconProps {
   name: string;
-  weight?: 'solid' | 'light' | 'regular' | 'brand';
+  weight?: 'solid' | 'light' | 'regular' | 'brand' | 'duotone';
   slot?: string;
 }
 

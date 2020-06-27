@@ -19,11 +19,11 @@ const writeVars = () => {
 const { state: vars, onChange } = createStore(config);
 
 Object.keys(vars).forEach((key) => {
-  // @ts-ignore
+  // @ts-ignore this will be true since we're iterating the keys
   onChange(key, writeVars);
 });
 
-export const invertGrays = () => {
+const invertGrays = () => {
   const keys = [];
   let values = [];
 
@@ -41,8 +41,21 @@ export const invertGrays = () => {
   }
 };
 
-export { vars };
+const toggleDarkMode = (isDarkMode: boolean) => {
+  vars.accentColor = vars.accentColor.lighten(isDarkMode ? 5 : -5);
+  invertGrays();
+};
+
+const getVariable = (name: keyof typeof vars) => {
+  const value = vars[name];
+
+  if (typeof value === 'function') {
+    return (value as Function)(vars);
+  } else {
+    return value;
+  }
+};
+
+export { getVariable, toggleDarkMode };
 
 writeVars();
-
-// invertGrays();

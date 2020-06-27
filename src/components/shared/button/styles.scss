@@ -97,7 +97,7 @@
     }
 
     &:active {
-      background: $gray5;
+      transform: scale(0.98);
     }
   }
 }
@@ -107,7 +107,7 @@
 }
 
 .button--style-neutral {
-  @include type($gray3, $gray4, $gray3, white, $gray3);
+  @include type($gray3, $gray4, $gray3, $gray7, $gray3);
 }
 
 .button--style-danger {

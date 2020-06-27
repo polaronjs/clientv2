@@ -4,7 +4,7 @@ import { windowState } from '../../../stores/window';
 import classnames from 'classnames';
 import { SwipeHandlerStore } from '../../shared/swipe/handler';
 import { normalize } from '../../../utils/normalize';
-import { vars } from '../../../stores/vars';
+import { getVariable } from '../../../stores/vars';
 import { RouterHistory, injectHistory } from '@stencil/router';
 
 const mobileMenuThreshold = 1200; // pixels
@@ -18,8 +18,8 @@ export class MainContainer {
   mobileMenuElement: HTMLElement;
   menuIsOpen: boolean;
 
-  menuXClamp = { min: -1 * vars.sidebarWidth.value, max: 0 };
-  menuXPos: number = -1 * vars.sidebarWidth.value;
+  menuXClamp = { min: -1 * getVariable('sidebarWidth').value, max: 0 };
+  menuXPos: number = -1 * getVariable('sidebarWidth').value;
 
   sidebarTimeout: NodeJS.Timer;
 
@@ -43,7 +43,7 @@ export class MainContainer {
       if (this.isMobile && windowState.width <= mobileMenuThreshold) {
         const newXPos = this.menuXPos + swipe.velocity;
 
-        if (newXPos <= 0 && newXPos > -1 * vars.sidebarWidth.value) {
+        if (newXPos <= 0 && newXPos > -1 * getVariable('sidebarWidth').value) {
           this.menuXPos = newXPos;
 
           this.mobileMenuElement.style.setProperty(
@@ -58,7 +58,7 @@ export class MainContainer {
     onTouchEnd: (_, swipe) => {
       const shouldComplete =
         swipe.velocity > 12 ||
-        Math.abs(swipe.distance / vars.sidebarWidth.value) > 0.3;
+        Math.abs(swipe.distance / getVariable('sidebarWidth').value) > 0.3;
 
       // derive an animation duration from the current swipe distance, normalized to between 180ms and 300ms
       const animationDuration = normalize(

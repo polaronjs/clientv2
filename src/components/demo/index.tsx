@@ -1,6 +1,7 @@
 import { Component, Host, h, State } from '@stencil/core';
 import { ButtonGroup } from '../shared/button-group';
 import { Icon } from '../shared/icon';
+import { app } from '../../stores/app';
 
 // TODO don't include this component in prod builds
 
@@ -11,6 +12,12 @@ import { Icon } from '../shared/icon';
 })
 export class PolaronComponentsDemo {
   @State() modalOpen: boolean;
+  @State() switchActive: boolean;
+
+  toggleDarkMode() {
+    app.darkMode = !app.darkMode;
+    this.switchActive = !!app.darkMode;
+  }
 
   render() {
     return (
@@ -40,10 +47,18 @@ export class PolaronComponentsDemo {
             </ButtonGroup>
             <ButtonGroup flow="left" gap={10}>
               <p-button>
-                Action <Icon slot="icon" name="arrow-right" />
+                Action <Icon slot="icon" weight="solid" name="arrow-right" />
               </p-button>
               <p-button typeName="link">
-                Action <Icon slot="icon" name="arrow-right" />
+                Action <Icon slot="icon" weight="solid" name="arrow-right" />
+              </p-button>
+            </ButtonGroup>
+            <ButtonGroup flow="left" gap={10}>
+              <p-button disabled>
+                Action <Icon slot="icon" weight="solid" name="arrow-right" />
+              </p-button>
+              <p-button disabled typeName="link">
+                Action <Icon slot="icon" weight="solid" name="arrow-right" />
               </p-button>
             </ButtonGroup>
           </fieldset>
@@ -51,7 +66,7 @@ export class PolaronComponentsDemo {
           <fieldset name="modal">
             <legend>Modals</legend>
             <p-button onClick={() => (this.modalOpen = true)}>
-              Open <Icon slot="icon" weight="solid" name="layer-group" />
+              Dialog <Icon slot="icon" weight="solid" name="layer-group" />
             </p-button>
             {this.modalOpen && (
               <p-modal onClose={() => (this.modalOpen = false)}>
@@ -65,6 +80,19 @@ export class PolaronComponentsDemo {
                 </p-modal-dialog>
               </p-modal>
             )}
+          </fieldset>
+
+          <fieldset name="switch">
+            <legend>Switch</legend>
+            <p-switch
+              onClick={() => this.toggleDarkMode()}
+              selected={this.switchActive}
+              label="Toggle dark mode"
+            />
+            <ButtonGroup gap={10}>
+              <p-switch disabled />
+              <p-switch selected={true} disabled />
+            </ButtonGroup>
           </fieldset>
         </div>
       </Host>
