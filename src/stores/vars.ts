@@ -42,7 +42,7 @@ const invertGrays = () => {
 };
 
 const toggleDarkMode = (isDarkMode: boolean) => {
-  vars.accentColor = vars.accentColor.lighten(isDarkMode ? 5 : -5);
+  vars.accentColor = vars.accentColor.lighten(isDarkMode ? 11 : -11);
   invertGrays();
 };
 

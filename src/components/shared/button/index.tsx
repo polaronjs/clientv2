@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 export type ButtonType = 'solid' | 'link';
 
-export type ButtonStyle = 'primary' | 'neutral' | 'danger' | 'success';
+export type ButtonStyle = 'primary' | 'danger' | 'success';
 
 export type ButtonSize = 'small' | 'default' | 'large';
 

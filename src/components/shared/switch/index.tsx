@@ -14,15 +14,15 @@ export class Switch {
   render() {
     return (
       <Host>
-        <button onClick={(event) => this.disabled && event.stopPropagation()}>
+        <button
+          class={classnames(
+            { 'switch--selected': this.selected },
+            { 'switch--disabled': this.disabled }
+          )}
+          onClick={(event) => this.disabled && event.stopPropagation()}
+        >
           {this.label && <span>{this.label}</span>}
-          <div
-            class={classnames(
-              'switch',
-              { 'switch--selected': this.selected },
-              { 'switch--disabled': this.disabled }
-            )}
-          >
+          <div class="switch">
             <div class="switch__fob"></div>
           </div>
         </button>

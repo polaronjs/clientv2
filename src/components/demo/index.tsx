@@ -29,15 +29,11 @@ export class PolaronComponentsDemo {
             <legend>Buttons</legend>
             <ButtonGroup flow="left" gap={10}>
               <p-button>Button Text</p-button>
-              <p-button styleName="neutral">Button Text</p-button>
               <p-button styleName="danger">Button Text</p-button>
               <p-button styleName="success">Button Text</p-button>
             </ButtonGroup>
             <ButtonGroup flow="left" gap={10}>
               <p-button typeName="link">Button Text</p-button>
-              <p-button styleName="neutral" typeName="link">
-                Button Text
-              </p-button>
               <p-button styleName="danger" typeName="link">
                 Button Text
               </p-button>

@@ -35,7 +35,7 @@ span {
   box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.08);
 }
 
-.switch--selected {
+.switch--selected .switch {
   background: $accent;
 
   .switch__fob {
@@ -46,4 +46,5 @@ span {
 .switch--disabled {
   pointer-events: none;
   opacity: 0.6;
+  cursor: default;
 }

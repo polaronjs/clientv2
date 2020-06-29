@@ -106,9 +106,10 @@
   @include type($accent, $accent1, $accent, white, $accent);
 }
 
-.button--style-neutral {
-  @include type($gray3, $gray4, $gray3, $gray7, $gray3);
-}
+// TODO keep these?
+// .button--style-neutral {
+//   @include type($gray3, $gray4, $gray3, $gray7, $gray3);
+// }
 
 .button--style-danger {
   @include type($danger, $danger1, $danger, white, $danger);
