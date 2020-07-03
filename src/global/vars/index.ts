@@ -16,11 +16,7 @@ export const config = {
 
   accentColor1: (config) => config.accentColor.lighten(10),
 
-  accentColor2: (config) => config.accentColor.lighten(40),
-
   'accentColor-1': (config) => config.accentColor.lighten(-10),
-
-  'accentColor-2': (config) => config.accentColor.lighten(-40),
 
   /**
    * The color used to represent danger
@@ -29,38 +25,30 @@ export const config = {
 
   dangerColor1: (config) => config.dangerColor.lighten(10),
 
-  dangerColor2: (config) => config.dangerColor.lighten(40),
-
   'dangerColor-1': (config) => config.dangerColor.lighten(-10),
-
-  'dangerColor-2': (config) => config.dangerColor.lighten(-40),
 
   /**
    * The color used to represent success
    */
   successColor: new ColorVariable(141, 77, 39.2),
 
-  successColor1: (config) => config.successColor.lighten(5),
-
-  successColor2: (config) => config.successColor.lighten(40),
+  successColor1: (config) => config.successColor.lighten(10),
 
   'successColor-1': (config) => config.successColor.lighten(-10),
 
-  'successColor-2': (config) => config.successColor.lighten(-20),
+  gray1Color: new ColorVariable(0, 0, 5),
 
-  gray1Color: new ColorVariable(0, 0, 12.9),
+  gray2Color: ({ gray1Color }) => gray1Color.lighten(15),
 
-  gray2Color: '#3B3B3B',
+  gray3Color: ({ gray1Color }) => gray1Color.lighten(30),
 
-  gray3Color: '#848484',
+  gray4Color: ({ gray1Color }) => gray1Color.lighten(45),
 
-  gray4Color: '#ABABAB',
+  gray5Color: ({ gray1Color }) => gray1Color.lighten(70),
 
-  gray5Color: '#CCCCCC',
+  gray6Color: ({ gray1Color }) => gray1Color.lighten(85),
 
-  gray6Color: '#E2E2E2',
-
-  gray7Color: new ColorVariable(0, 100, 100),
+  gray7Color: new ColorVariable(0, 0, 100), // exactly white
 
   modalBackground: (config) => config.gray7Color.mutateAlpha(0.9),
 };

@@ -12,6 +12,7 @@ $padding: 20px;
   width: calc(100vw - 30px); // 30 px from the 15 pixels for right/left margin
   box-sizing: border-box;
   margin-top: -20%;
+  border: 1px solid $gray6;
 }
 
 .dialog__title {

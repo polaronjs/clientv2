@@ -1,25 +1,37 @@
 import { createStore } from '@stencil/store';
 import { config } from '../global/vars';
 
+const writeValueToBody = (name, value) =>
+  document.body.style.setProperty('--' + name, value);
+
 /**
  * Write the contents of the document root node as custom css properties
  */
-const writeVars = () => {
-  for (const name of Object.keys(vars)) {
-    let value = vars[name];
-
+const writeVars = <T extends typeof vars>(key?: string, value?: T[keyof T]) => {
+  if (key && value) {
     if (typeof value === 'function') {
       value = value(vars);
     }
 
-    document.body.style.setProperty('--' + name, value.toString());
+    writeValueToBody(key, value.toString());
+  } else {
+    for (const name of Object.keys(vars)) {
+      let value = vars[name];
+
+      if (typeof value === 'function') {
+        value = value(vars);
+      }
+
+      writeValueToBody(name, value.toString());
+    }
   }
 };
 
 const { state: vars, onChange } = createStore(config);
 
-Object.keys(vars).forEach((key) => {
-  // @ts-ignore this will be true since we're iterating the keys
+// declare onChange handlers for each of the variable properties
+Object.keys(vars).forEach((key: keyof typeof vars) => {
+  // @ts-ignore
   onChange(key, writeVars);
 });
 
@@ -31,22 +43,26 @@ const invertGrays = () => {
     .filter(([key]) => key.includes('gray'))
     .forEach(([key, value]) => {
       keys.push(key);
-      values.push(value);
+      values.push(typeof value === 'function' ? value(vars) : value);
     });
 
   values = values.reverse();
 
   for (let i = 0; i < keys.length; i++) {
+    // FIXME this is super inefficient, n gray color values means n^2 different writes to body when toggling, can we improve?
     vars[keys[i]] = values[i];
   }
 };
 
-const toggleDarkMode = (isDarkMode: boolean) => {
-  vars.accentColor = vars.accentColor.lighten(isDarkMode ? 11 : -11);
+// on first import, process and write all variables from config to body
+writeVars();
+
+export const toggleDarkMode = (isDarkMode: boolean) => {
+  vars.accentColor = vars.accentColor.lighten(isDarkMode ? 5 : -5);
   invertGrays();
 };
 
-const getVariable = (name: keyof typeof vars) => {
+export const getVariable = (name: keyof typeof vars) => {
   const value = vars[name];
 
   if (typeof value === 'function') {
@@ -55,7 +71,3 @@ const getVariable = (name: keyof typeof vars) => {
     return value;
   }
 };
-
-export { getVariable, toggleDarkMode };
-
-writeVars();
