@@ -46,6 +46,7 @@ export class Button {
             `button--style-${this.styleName}`,
             `button--size-${this.size}`
           )}
+          disabled={this.disabled}
         >
           <slot />
           <span class="button__icon">

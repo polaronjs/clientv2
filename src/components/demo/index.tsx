@@ -90,6 +90,36 @@ export class PolaronComponentsDemo {
               <p-switch selected={true} disabled />
             </ButtonGroup>
           </fieldset>
+
+          <fieldset name="input">
+            <legend>Text Field</legend>
+            <p-text-field
+              name="demo"
+              label="Demo input"
+              placeholder="Enter your demo text here"
+            />
+            <br />
+            <p-text-field
+              name="demo-disabled"
+              label="Demo input - disabled"
+              placeholder="Enter your demo text here"
+              disabled
+            />
+            <br />
+            <p-text-field
+              name="demo - readonly"
+              value="This is a text value"
+              label="Demo input - readonly"
+              readonly
+            />
+            <br />
+            <p-text-field
+              name="demo - error"
+              value="not an email address"
+              label="Email address"
+              error="Please enter a valid email address"
+            />
+          </fieldset>
         </div>
       </Host>
     );

@@ -20,6 +20,7 @@ export class Switch {
             { 'switch--disabled': this.disabled }
           )}
           onClick={(event) => this.disabled && event.stopPropagation()}
+          disabled={this.disabled}
         >
           {this.label && <span>{this.label}</span>}
           <div class="switch">
