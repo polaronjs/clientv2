@@ -24,6 +24,7 @@ export class Button {
   @State() private hasIcon: boolean;
 
   componentDidLoad() {
+    // FIXME anyway we can kill this extra render?
     // we'll trigger a single rerender to adjust styling if an icon was passed
     const slot = this.host.shadowRoot.querySelector(
       'slot[name=icon]'
