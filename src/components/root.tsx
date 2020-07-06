@@ -25,7 +25,7 @@ export class AppRoot {
             />
           </stencil-route-switch>
         </stencil-router>
-        <p-modal-container />
+        <p-exit-portal />
       </main>
     );
   }

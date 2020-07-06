@@ -1,60 +1,38 @@
-import {
-  Component,
-  Host,
-  Element,
-  Event,
-  h,
-  EventEmitter,
-} from '@stencil/core';
-import { ModalService, ModalSubscription } from './modal-service';
+import { Component, Host, Event, EventEmitter, h } from '@stencil/core';
+import { animation } from './animations';
+import { EntryPortal } from '../portal';
+import { ButtonGroup } from '../button-group';
 
 @Component({
   tag: 'p-modal',
   styleUrl: 'styles.scss',
   shadow: true,
 })
-export class Modal {
-  @Event() private close: EventEmitter<void>;
-
-  @Element() private host: HTMLElement;
-
-  private subscription: ModalSubscription;
-
-  private handleClose() {
-    // trigger close event in container component
-    ModalService.close();
-
-    // emit close to this component's parent
-    this.close.emit();
-
-    // unsubscribe
-    this.subscription.unsubscribe();
-  }
-
-  componentDidLoad() {
-    const element = this.host.shadowRoot
-      .querySelector('slot')
-      .assignedNodes()[0] as HTMLElement;
-
-    ModalService.create({ element });
-
-    this.subscription = ModalService.subscribe((payload) => {
-      if (payload === null) {
-        this.handleClose();
-      }
-    });
-  }
-
-  componentDidUnload() {
-    if (ModalService.isModalOpen) {
-      this.handleClose();
-    }
-  }
+export class ModalComponent {
+  @Event() close: EventEmitter<void>;
 
   render() {
     return (
-      <Host style={{ fontSize: '1rem', display: 'none' }}>
-        <slot />
+      <Host>
+        <EntryPortal>
+          <animation-container animation={animation}>
+            <div onClick={() => this.close.emit()} class="modal">
+              <div
+                onClick={(event) => event.stopPropagation()}
+                class="modal__body"
+              >
+                <p-modal-dialog>
+                  <div slot="title">This is a modal</div>
+                  <span>This is a test of the modal component</span>
+                  <ButtonGroup flow="right" slot="actions">
+                    <p-button>Primary</p-button>
+                    <p-button typeName="link">Secondary</p-button>
+                  </ButtonGroup>
+                </p-modal-dialog>
+              </div>
+            </div>
+          </animation-container>
+        </EntryPortal>
       </Host>
     );
   }

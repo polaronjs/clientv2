@@ -1,6 +1,5 @@
 import { Component, Host, h } from '@stencil/core';
 import { Icon } from '../../../icon';
-import { ModalService } from '../../modal-service';
 
 @Component({
   tag: 'p-modal-dialog',
@@ -16,7 +15,7 @@ export class DialogModalComponent {
             <h4>
               <slot name="title" />
             </h4>
-            <button onClick={() => ModalService.close()} class="title__close">
+            <button class="title__close">
               <Icon weight="light" name="times" />
             </button>
           </div>

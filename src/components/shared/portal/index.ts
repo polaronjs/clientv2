@@ -1,0 +1,1 @@
+export { EntryPortal } from './entry';

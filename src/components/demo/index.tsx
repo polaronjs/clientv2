@@ -2,8 +2,21 @@ import { Component, Host, h, State } from '@stencil/core';
 import { ButtonGroup } from '../shared/button-group';
 import { Icon } from '../shared/icon';
 import { app } from '../../stores/app';
+import { EntryPortal } from '../shared/portal';
+import { trigger, transition, style, animate } from '@polaron/shift';
 
 // TODO don't include this component in prod builds
+
+const animation = trigger('entryComponent', [
+  transition(':enter', [
+    style({ opacity: 0 }),
+    animate('200ms ease', style({ opacity: 1 })),
+  ]),
+  transition(':leave', [
+    style({ opacity: 1 }),
+    animate('200ms ease', style({ opacity: 0 })),
+  ]),
+]);
 
 @Component({
   tag: 'p-components-demo',
@@ -12,6 +25,7 @@ import { app } from '../../stores/app';
 })
 export class PolaronComponentsDemo {
   @State() modalOpen: boolean;
+  @State() conditionalEntryOpen: boolean;
   @State() switchActive: boolean;
 
   toggleDarkMode() {
@@ -66,14 +80,15 @@ export class PolaronComponentsDemo {
             </p-button>
             {this.modalOpen && (
               <p-modal onClose={() => (this.modalOpen = false)}>
-                <p-modal-dialog>
+                {/* hi */}
+                {/* <p-modal-dialog>
                   <div slot="title">This is a modal</div>
                   <span>This is a test of the modal component</span>
                   <ButtonGroup flow="right" slot="actions">
                     <p-button>Primary</p-button>
                     <p-button typeName="link">Secondary</p-button>
                   </ButtonGroup>
-                </p-modal-dialog>
+                </p-modal-dialog> */}
               </p-modal>
             )}
           </fieldset>
@@ -119,6 +134,25 @@ export class PolaronComponentsDemo {
               label="Email address"
               error="Please enter a valid email address"
             />
+          </fieldset>
+
+          <fieldset name="popover">
+            <legend>Popover</legend>
+            <p-button
+              onClick={() =>
+                (this.conditionalEntryOpen = !this.conditionalEntryOpen)
+              }
+            >
+              Toggle
+            </p-button>
+            {/* <EntryPortal><div>I'm always here</div></EntryPortal>
+            <EntryPortal active={!!this.conditionalEntryOpen}>
+              <animation-container animation={animation}>
+                <span class="modal__body">
+                  I'm here sometimes and should animate in/out
+                </span>
+              </animation-container>
+            </EntryPortal> */}
           </fieldset>
         </div>
       </Host>
